@@ -42,22 +42,48 @@
 	</head>
 
 	<style>
-		.div_soporte_bachiller {
+		.div_img_modal {
 		  width: 100%;
-		  height: 200px;
-		  background-image: url('images/soportes/Titulo_bachiller.png');
-		  background-repeat: no-repeat;
-		  background-size: contain;
-		  border: none;
+		  height: auto;
 		}
-		.div_soporte_tsu {
-		  width: 100%;
-		  height: 200px;
-		  background-image: url('images/soportes/Titulo_TSU.png');
-		  background-repeat: no-repeat;
-		  background-size: contain;
-		  border: none;
+
+		/* The Modal (background) */
+		.modal {
+		  display: none; /* Hidden by default */
+		  position: fixed; /* Stay in place */
+		  z-index: 1; /* Sit on top */
+		  left: 0;
+		  top: 0;
+		  width: 100%; /* Full width */
+		  height: 100%; /* Full height */
+		  overflow: auto; /* Enable scroll if needed */
+		  background-color: rgb(0,0,0); /* Fallback color */
+		  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 		}
+
+		/* Modal Content/Box */
+		.modal-content {
+		  background-color: #fefefe;
+		  margin: 1% auto; /* 15% from the top and centered */
+		  padding: 20px;
+		  border: 1px solid #888;
+		  width: 80%; /* Could be more or less, depending on screen size */
+		}
+
+		/* The Close Button */
+		.close {
+		  color: #aaa;
+		  float: right;
+		  font-size: 28px;
+		  font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+		  color: black;
+		  text-decoration: none;
+		  cursor: pointer;
+		} 
 	</style>
 
 
@@ -82,6 +108,19 @@
 							</header>
 
 							<section>
+
+								<!-- The Modal -->
+								<div id="myModal" class="modal">
+
+								  <!-- Modal content -->
+								  <div class="modal-content">
+								    <span class="close">&times;</span>
+								    <img id="imagenModal" class="div_img_modal" src="">
+								  </div>
+
+								</div> 
+
+
 								<header class="main">
 									<h1 style="font-size: 32px;">Formación.</h1>
 								</header>
@@ -105,7 +144,9 @@
 								<blockquote>
 									<spam style="font-size: 16px">2005</spam>, <strong>Instituto Universitario de Tecnología de Los Llanos</strong>, título obtenido con la presentación de un proyecto desarrollado en Visual Basic para la poligonación y cálculo de coordenadas topograficas, <strong>Calabozo - Venezuela.</strong>
 
-									<div class="div_soporte_tsu"></div>
+									<div>
+										<img id="Titulo_TSU" onclick="openModal(this.id)" src="images/soportes/Titulo_TSU.png" width="auto" height="370" style="cursor: pointer;">
+									</div>
 
 								</blockquote>
 
@@ -113,7 +154,9 @@
 								<blockquote>
 									<spam style="font-size: 16px">1999</spam>, <strong>Instituto Teresa de la Parra</strong>, título obtenido de bachiller en administración, mensión procesamiento de datos, <strong>Calabozo - Venezuela.</strong>
 
-									<div class="div_soporte_bachiller"></div>
+									<div>
+										<img id="Titulo_bachiller" onclick="openModal(this.id)" src="images/soportes/Titulo_bachiller.png" width="auto" height="220" style="cursor: pointer;">
+									</div>
 
 								</blockquote>
 
@@ -189,4 +232,31 @@
 			<script src="assets/js/main.js"></script>
 
 	</body>
+
+	<script>
+
+	function openModal(id){
+		modal.style.display = "block";
+		
+		document.getElementById('imagenModal').src = 'images/soportes/'+id+'.png';
+	}
+
+	// Get the modal
+	var modal = document.getElementById('myModal');
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	}
+	</script>
 </html>
